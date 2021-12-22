@@ -1,0 +1,10 @@
+<cadmus-current-item-bar></cadmus-current-item-bar>
+<biblio-ext-bibliography-part
+  [itemId]="itemId"
+  [roleId]="roleId || ''"
+  [model]="$any(part$ | async)"
+  (modelChange)="save($event)"
+  [thesauri]="$any(thesauri$ | async)"
+  (editorClose)="close()"
+  (dirtyChange)="onDirtyChange($event)"
+></biblio-ext-bibliography-part>

@@ -1,0 +1,125 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h2>Demo</h2>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <!-- work picker -->
+    <mat-tab-group>
+      <mat-tab label="work picker">
+        <div>
+          <h3>Work</h3>
+          <biblio-work-picker
+            (workChange)="onWorkChange($event)"
+          ></biblio-work-picker>
+          <hr />
+          <div *ngIf="work">
+            <pre>{{ work | json }}</pre>
+          </div>
+        </div>
+
+        <div>
+          <h3>Container</h3>
+          <biblio-work-picker
+            [container]="true"
+            (workChange)="onContainerChange($event)"
+          ></biblio-work-picker>
+          <hr />
+          <div *ngIf="container">
+            <pre>{{ container | json }}</pre>
+          </div>
+        </div>
+      </mat-tab>
+
+      <!-- author picker -->
+      <mat-tab label="author picker">
+        <biblio-author-picker
+          (authorChange)="onAuthorChange($event)"
+        ></biblio-author-picker>
+        <div *ngIf="author">
+          <pre>{{ author | json }}</pre>
+        </div>
+      </mat-tab>
+
+      <!-- work authors -->
+      <mat-tab label="work authors">
+        <biblio-work-authors
+          [roleEntries]="roleEntries"
+          (modelChange)="onAuthorsChange($event)"
+        ></biblio-work-authors>
+        <div *ngIf="authors">
+          <pre>{{ authors | json }}</pre>
+        </div>
+      </mat-tab>
+
+      <!-- keyword picker -->
+      <mat-tab label="keyword picker">
+        <biblio-keyword-picker
+          (keywordChange)="onKeywordChange($event)"
+        ></biblio-keyword-picker>
+        <hr />
+        <div *ngIf="keyword">
+          <pre>{{ keyword | json }}</pre>
+        </div>
+      </mat-tab>
+
+      <!-- work keywords -->
+      <mat-tab label="work keywords">
+        <biblio-work-keywords
+          [langEntries]="langEntries"
+          (modelChange)="onKeywordsChange($event)"
+        ></biblio-work-keywords>
+        <div *ngIf="keywords">
+          <pre>{{ keywords | json }}</pre>
+        </div>
+      </mat-tab>
+
+      <!-- work -->
+      <mat-tab label="work">
+        <biblio-work
+          [langEntries]="langEntries"
+          (modelChange)="onEditedWorkChange($event)"
+        ></biblio-work>
+        <div *ngIf="editedWork">
+          <pre>{{ editedWork | json }}</pre>
+        </div>
+      </mat-tab>
+
+      <!-- work filter -->
+      <mat-tab label="work filter">
+        <biblio-work-filter
+          [langEntries]="langEntries"
+          [persisted]="true"
+          (filterChange)="onFilterChange($event)"
+        ></biblio-work-filter>
+        <div *ngIf="filter">
+          <pre>{{ filter | json }}</pre>
+        </div>
+      </mat-tab>
+
+      <!-- work details -->
+      <mat-tab label="work details">
+        <div>
+          <biblio-work-picker
+            (workChange)="onWorkChangeForDetails($event)"
+          ></biblio-work-picker>
+        </div>
+        <biblio-work-details [work]="detWork"></biblio-work-details>
+      </mat-tab>
+
+      <!-- work browser -->
+      <mat-tab label="work browser">
+        <div>
+          <biblio-work-browser
+            [langEntries]="langEntries"
+            [editEnabled]="false"
+            [addEnabled]="false"
+            [deleteEnabled]="false"
+            [pickEnabled]="false"
+          ></biblio-work-browser>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

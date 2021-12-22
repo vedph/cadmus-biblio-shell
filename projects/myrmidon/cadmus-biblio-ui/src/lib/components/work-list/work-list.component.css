@@ -1,0 +1,13 @@
+th {
+  text-align: left;
+  font-weight: normal;
+  color: silver;
+}
+.work-controls {
+  margin-left: 24px;
+  display: grid;
+  grid-template-columns: 8em 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "tag note";
+  column-gap: 8px;
+}

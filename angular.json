@@ -24,20 +24,33 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/env.js",
+              {
+                "glob": "**/*",
+                "input": "node_modules/ngx-monaco-editor/assets/monaco",
+                "output": "/assets/monaco"
+              }
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "sourceMap": {
+              "scripts": true,
+              "styles": true,
+              "hidden": false,
+              "vendor": true
+            }
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "4mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -89,14 +102,167 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
+          }
+        }
+      }
+    },
+    "@myrmidon/cadmus-biblio-core": {
+      "projectType": "library",
+      "root": "projects/myrmidon/cadmus-biblio-core",
+      "sourceRoot": "projects/myrmidon/cadmus-biblio-core/src",
+      "prefix": "cadmus",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/myrmidon/cadmus-biblio-core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/myrmidon/cadmus-biblio-core/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/myrmidon/cadmus-biblio-core/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/myrmidon/cadmus-biblio-core/src/test.ts",
+            "tsConfig": "projects/myrmidon/cadmus-biblio-core/tsconfig.spec.json",
+            "karmaConfig": "projects/myrmidon/cadmus-biblio-core/karma.conf.js"
+          }
+        }
+      }
+    },
+    "@myrmidon/cadmus-biblio-api": {
+      "projectType": "library",
+      "root": "projects/myrmidon/cadmus-biblio-api",
+      "sourceRoot": "projects/myrmidon/cadmus-biblio-api/src",
+      "prefix": "cadmus",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/myrmidon/cadmus-biblio-api/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/myrmidon/cadmus-biblio-api/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/myrmidon/cadmus-biblio-api/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/myrmidon/cadmus-biblio-api/src/test.ts",
+            "tsConfig": "projects/myrmidon/cadmus-biblio-api/tsconfig.spec.json",
+            "karmaConfig": "projects/myrmidon/cadmus-biblio-api/karma.conf.js"
+          }
+        }
+      }
+    },
+    "@myrmidon/cadmus-biblio-ui": {
+      "projectType": "library",
+      "root": "projects/myrmidon/cadmus-biblio-ui",
+      "sourceRoot": "projects/myrmidon/cadmus-biblio-ui/src",
+      "prefix": "cadmus",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/myrmidon/cadmus-biblio-ui/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/myrmidon/cadmus-biblio-ui/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/myrmidon/cadmus-biblio-ui/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/myrmidon/cadmus-biblio-ui/src/test.ts",
+            "tsConfig": "projects/myrmidon/cadmus-biblio-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/myrmidon/cadmus-biblio-ui/karma.conf.js"
+          }
+        }
+      }
+    },
+    "@myrmidon/cadmus-part-biblio-ui": {
+      "projectType": "library",
+      "root": "projects/myrmidon/cadmus-part-biblio-ui",
+      "sourceRoot": "projects/myrmidon/cadmus-part-biblio-ui/src",
+      "prefix": "cadmus",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/myrmidon/cadmus-part-biblio-ui/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/myrmidon/cadmus-part-biblio-ui/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/myrmidon/cadmus-part-biblio-ui/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/myrmidon/cadmus-part-biblio-ui/src/test.ts",
+            "tsConfig": "projects/myrmidon/cadmus-part-biblio-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/myrmidon/cadmus-part-biblio-ui/karma.conf.js"
+          }
+        }
+      }
+    },
+    "@myrmidon/cadmus-part-biblio-pg": {
+      "projectType": "library",
+      "root": "projects/myrmidon/cadmus-part-biblio-pg",
+      "sourceRoot": "projects/myrmidon/cadmus-part-biblio-pg/src",
+      "prefix": "cadmus",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/myrmidon/cadmus-part-biblio-pg/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/myrmidon/cadmus-part-biblio-pg/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/myrmidon/cadmus-part-biblio-pg/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/myrmidon/cadmus-part-biblio-pg/src/test.ts",
+            "tsConfig": "projects/myrmidon/cadmus-part-biblio-pg/tsconfig.spec.json",
+            "karmaConfig": "projects/myrmidon/cadmus-part-biblio-pg/karma.conf.js"
           }
         }
       }
